@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Home";
+const pageDescription =
+  "Richmann - Software Engineer x Product designer - designing clean, thouhtful user experiences and building the tech bringing those experiences to life.";
+const ogURL = "https://richmnn.com";
+const keywords =
+  "Richmann Addai, software engineer, web development, product designer, UI/UX design, technology solutions, user experiences, entrepreneurial projects, Utopia Tech, personal projects, software development, design and development, software products";
+const gap = 32;
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  ogURL={ogURL}
+  keywords={keywords}
+  gap={gap}
+>
+  <!-- Header -->
+  <div class="w-full text-[16px]">
+    <p class="italic font-int text-tertiary">The internet corner of Richmann Addai</p>
+    <h1 class="text-primary font-semibold flex flex-wrap gap-[8px] text-nowrap w-full font-mr">
+      <span>Software Engineer</span>
+      <span>|</span>
+      <span>Product Designer</span>
+      <span>|</span>
+      <span class="mt-[-6px] md:mt-0">Professional Button - Aligner</span>
+    </h1>
+  </div>
+
+  <!-- Hi -->
+  <div class="w-full flex flex-col gap-[24px] text-[14px] font-mr font-semibold">
+    <hr />
+    <div class="flex flex-col gap-[48px]">
+      <h2 class="text-secondary">Hi,</h2>
+      <p class="text-tertiary">
+        <span class="block"
+          >I wear two hats: Software Engineering x Product Design.</span
+        >
+        <span class="block"
+          >I design clean, thoughtful user experiences - then roll up my sleeves
+          and build them.</span
+        >
+        <span class="block"
+          >By day i’m engineering software @ <a
+            target="_blank"
+            href="https://utopiatech.africa/"
+            class="underline text-primary hover:text-secondary">Utopia Tech</a
+          >
+        </span>
+        <span class="block"
+          >By night i’m buried in side projects, client work & entrepreneurial experiments. </span
+        >
+        <span class="block"
+          >This is my humble corner of the web.</span
+        >
+		<span class="block"
+          >You’ll find my design hat over at <a
+            target="_blank"
+            href="https://utopiatech.africa/"
+            class="underline text-primary hover:text-secondary">design.richmnn.com.</a
+          >
+		  </span
+        >
+		<span class="block"
+          >And my engineering hat over at <a
+            target="_blank"
+            href="https://utopiatech.africa/"
+            class="underline text-primary hover:text-secondary">dev.richmnn.com.</a
+          >
+		  </span
+        >
+      </p>
+    </div>
+  </div>
+</BaseLayout>
