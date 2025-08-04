@@ -134,4 +134,16 @@ import MusicPlayer2 from "./MusicPlayer2.astro";
 
     document.body.classList.remove("no-scroll");
   });
+
+  const BREAKPOINT = 1024;
+  // Always listen for resize to auto-close mobile nav
+  window.addEventListener("resize", () => {
+    const isNowDesktop = window.innerWidth >= BREAKPOINT;
+
+    if (isNowDesktop) {
+      mobileNav.classList.add("hidden");
+      mobileNav.classList.remove("flex", "opacity-100", "opacity-0");
+      document.body.classList.remove("no-scroll");
+    }
+  });
 </script>

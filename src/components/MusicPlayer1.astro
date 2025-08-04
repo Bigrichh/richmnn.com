@@ -873,6 +873,14 @@ import Previous from "../assets/icons/previous.svg";
     }
   }
 
+  function stopDesktopMusic() {
+    if (audio && !audio.paused) {
+      audio.pause();
+      disc.classList.remove("spin");
+      stopMarqueeLoop();
+    }
+  }
+
   // Listen to audio events to start/stop idle spin
   audio.addEventListener("play", stopIdleSpin);
   audio.addEventListener("pause", startIdleSpin);
@@ -887,13 +895,22 @@ import Previous from "../assets/icons/previous.svg";
     startIdleSpin(); // begin idle spin until music starts
   });
 
+  const MOBILE_BREAKPOINT = 1024;
+  let isMobile = window.innerWidth < MOBILE_BREAKPOINT;
   // On window resize, update marque animation
-  window.addEventListener("resize", updateMarquee);
+  window.addEventListener("resize", () => {
+    updateMarquee();
+    const nowMobile = window.innerWidth < MOBILE_BREAKPOINT;
+
+    if (!isMobile && nowMobile) {
+      stopDesktopMusic();
+    }
+
+    isMobile = nowMobile;
+  });
 </script>
 
 <style is:global>
-
-
   /* -------------------------------
      MARQUEE (TRACK TEXT SCROLL)
   ---------------------------------*/

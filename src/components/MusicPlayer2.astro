@@ -11,7 +11,10 @@ import Previous from "../assets/icons/previous.svg";
   <!-- Top row: Song info + control buttons -->
   <div class="flex items-center justify-between">
     <!-- Track Info Section (scrolls if too long) -->
-    <div id="track-info2" class="w-[72px] overflow-clip flex flex-col gap-[4px]">
+    <div
+      id="track-info2"
+      class="w-[72px] overflow-clip flex flex-col gap-[4px]"
+    >
       <!-- Track Title -->
       <div class="marquee-wrapper w-full">
         <p id="track-title2" class="text-primary text-nowrap marquee">
@@ -728,7 +731,8 @@ import Previous from "../assets/icons/previous.svg";
 
     // Get the next track (or current one if already set)
     const track2 =
-      shuffleQueues2[genre][currentTrackState2.index] || getNextShuffledTrack2();
+      shuffleQueues2[genre][currentTrackState2.index] ||
+      getNextShuffledTrack2();
     if (!track2) return; // No track? Just exit
 
     updateTrack2(track2); //Update UI + <audio> player
@@ -873,6 +877,14 @@ import Previous from "../assets/icons/previous.svg";
     }
   }
 
+  function stopMobileMusic() {
+    if (audio2 && !audio2.paused) {
+      audio2.pause();
+      disc2.classList.remove("spin");
+      stopMarqueeLoop2();
+    }
+  }
+
   // Listen to audio events to start/stop idle spin
   audio2.addEventListener("play", stopIdleSpin2);
   audio2.addEventListener("pause", startIdleSpin2);
@@ -887,13 +899,22 @@ import Previous from "../assets/icons/previous.svg";
     startIdleSpin2(); // begin idle spin until music starts
   });
 
+  const MOBILE_BREAKPOINT2 = 1024;
+  let isMobile2 = window.innerWidth < MOBILE_BREAKPOINT2;
   // On window resize, update marque animation
-  window.addEventListener("resize", updateMarquee2);
+    window.addEventListener("resize", () => {
+    updateMarquee2();
+    const nowMobile2 = window.innerWidth < MOBILE_BREAKPOINT2;
+
+    if (isMobile2 && !nowMobile2) {
+      stopMobileMusic();
+    }
+
+    isMobile2 = nowMobile2;
+  });
 </script>
 
 <style is:global>
-
-
   /* -------------------------------
      MARQUEE (TRACK TEXT SCROLL)
   ---------------------------------*/
