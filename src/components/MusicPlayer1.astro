@@ -39,7 +39,7 @@ import Previous from "../assets/icons/previous.svg";
     </div>
     <!-- Hidden audio element (controls music) -->
     <audio id="audio" preload="metadata" hidden>
-      <source src="path/to/your-track.mp3" type="audio/mpeg" />
+      <source src="" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
   </div>
@@ -630,9 +630,6 @@ import Previous from "../assets/icons/previous.svg";
     index: 0, // Start at the first track in the queue
   };
 
-  // We'll store this for convenience in some functions
-  let currentGenre = "piano"; // Default selected genre
-
   // ========================================
   // Grab references to DOM elements (HTML)
   // ========================================
@@ -747,8 +744,12 @@ import Previous from "../assets/icons/previous.svg";
   // When a track finishes, play the next one
   // ========================================
   audio.addEventListener("ended", () => {
-    playNextShuffledFromGenre(currentGenre); // continue same genre
-    startMarqueeLoop(); // Restart marquee animation
+    const nextTrack = getNextShuffledTrack();
+    if (nextTrack) {
+      updateTrack(nextTrack);
+      audio.play();
+      startMarqueeLoop();
+    }
   });
 
   // ========================================
@@ -890,7 +891,7 @@ import Previous from "../assets/icons/previous.svg";
   // When the page loads...
   // ========================================
   window.addEventListener("DOMContentLoaded", () => {
-    const track = getNextShuffledTrack(currentGenre); //first track
+    const track = getNextShuffledTrack(currentTrackState.genre); //first track
     updateTrack(track); // set it
     startIdleSpin(); // begin idle spin until music starts
   });

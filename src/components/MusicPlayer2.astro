@@ -42,7 +42,7 @@ import Previous from "../assets/icons/previous.svg";
     </div>
     <!-- Hidden audio element (controls music) -->
     <audio id="audio2" preload="metadata" hidden>
-      <source src="path/to/your-track.mp3" type="audio/mpeg" />
+      <source src="" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
   </div>
@@ -633,9 +633,6 @@ import Previous from "../assets/icons/previous.svg";
     index: 0, // Start at the first track in the queue
   };
 
-  // We'll store this for convenience in some functions
-  let currentGenre2 = "piano"; // Default selected genre
-
   // ========================================
   // Grab references to DOM elements (HTML)
   // ========================================
@@ -751,8 +748,12 @@ import Previous from "../assets/icons/previous.svg";
   // When a track finishes, play the next one
   // ========================================
   audio2.addEventListener("ended", () => {
-    playNextShuffledFromGenre2(currentGenre); // continue same genre
-    startMarqueeLoop2(); // Restart marquee animation
+    const nextTrack = getNextShuffledTrack2();
+    if (nextTrack) {
+      updateTrack2(nextTrack);
+      audio2.play();
+      startMarqueeLoop2();
+    }
   });
 
   // ========================================
@@ -823,7 +824,7 @@ import Previous from "../assets/icons/previous.svg";
       const wrapper = el.parentElement;
 
       const isOverflowing = el.scrollWidth > wrapper.offsetWidth;
-      const isPlaying = !audio.paused && !audio.ended;
+      const isPlaying = !audio2.paused && !audio2.ended;
 
       if (isPlaying && isOverflowing) {
         // Reset animation
@@ -894,7 +895,7 @@ import Previous from "../assets/icons/previous.svg";
   // When the page loads...
   // ========================================
   window.addEventListener("DOMContentLoaded", () => {
-    const track = getNextShuffledTrack2(currentGenre2); //first track
+    const track = getNextShuffledTrack2(currentTrackState2.genre); //first track
     updateTrack2(track); // set it
     startIdleSpin2(); // begin idle spin until music starts
   });
@@ -902,7 +903,7 @@ import Previous from "../assets/icons/previous.svg";
   const MOBILE_BREAKPOINT2 = 1024;
   let isMobile2 = window.innerWidth < MOBILE_BREAKPOINT2;
   // On window resize, update marque animation
-    window.addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
     updateMarquee2();
     const nowMobile2 = window.innerWidth < MOBILE_BREAKPOINT2;
 
