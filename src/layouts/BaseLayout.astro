@@ -1,8 +1,5 @@
 ---
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-const { gap } = Astro.props;
 
 // Meta tags for seo data
 const { pageTitle } = Astro.props;
@@ -65,10 +62,10 @@ const { keywords } = Astro.props;
         "name": "Richmann Addai",
         "url": "https://richmnn.com",
         "image": "https://richmnn.com/favicon/android-chrome-512x512.png",
-        "jobTitle": "Product Designer & Software Engineer",
+        "jobTitle": "Design Engineer",
         "sameAs": [
           "https://github.com/Bigrichh",
-          "https://www.linkedin.com/in/richmann-addai-a96777256/"
+          "https://linkedin.com/in/richmnn"
         ]
       }
     </script>
@@ -77,7 +74,7 @@ const { keywords } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
       rel="stylesheet"
     />
 
@@ -93,16 +90,9 @@ const { keywords } = Astro.props;
 
     <title>2025 Richmnn | {pageTitle}</title>
   </head>
-  <body class="bg-bgprimary">
-    <main class="flex w-full justify-center">
-      <div
-        style={`gap: ${gap}vh`}
-        class={`w-[320px] md:w-[610px] flex flex-col py-[48px]`}
-      >
-        <NavBar pageTitle={pageTitle} />
-        <slot />
-        <Footer showHr={true} />
-      </div>
+  <body class="bg-bgprimary overflow-x-clip">
+    <main class="flex flex-col w-full">
+      <slot />
     </main>
   </body>
 </html>

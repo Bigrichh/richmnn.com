@@ -1,12 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import DesktopNav from "../components/DesktopNav.astro";
+import MobileNav from "../components/MobileNav.astro";
+import MusicPlayer1 from "../components/MusicPlayer1.astro";
+import HeroAnimation from "../components/HeroAnimation.astro";
+
 const pageTitle = "Home";
 const pageDescription =
-  "Richmann - Software Engineer x Product designer - designing clean, thouhtful user experiences and building the tech bringing those experiences to life.";
+  "Richmann - Design Engineer - designing clean, thouhtful user experiences and building the tech bringing those experiences to life.";
 const ogURL = "https://richmnn.com";
 const keywords =
-  "Richmann Addai, software engineer, web development, product designer, UI/UX design, technology solutions, user experiences, entrepreneurial projects, Utopia Tech, personal projects, software development, design and development, software products";
-const gap = 32;
+  "Richmann Addai, software engineer, design engineer, web development, product designer, UI/UX design, technology solutions, user experiences, entrepreneurial projects, Utopia Tech, personal projects, software development, design and development, software products";
 ---
 
 <BaseLayout
@@ -14,63 +19,188 @@ const gap = 32;
   pageDescription={pageDescription}
   ogURL={ogURL}
   keywords={keywords}
-  gap={gap}
 >
-  <!-- Header -->
-  <div class="w-full text-[16px]">
-    <p class="italic font-int text-tertiary">The internet corner of Richmann Addai</p>
-    <h1 class="text-primary font-semibold flex flex-wrap gap-[8px] text-nowrap w-full font-mr">
-      <span>Software Engineer</span>
-      <span>|</span>
-      <span>Product Designer</span>
-      <span>|</span>
-      <span class="mt-[-6px] md:mt-0">Professional Button - Aligner</span>
-    </h1>
-  </div>
-
-  <!-- Hi -->
-  <div class="w-full flex flex-col gap-[24px] text-[14px] font-mr font-semibold">
-    <hr />
-    <div class="flex flex-col gap-[48px]">
-      <h2 class="text-secondary">Hi,</h2>
-      <p class="text-tertiary">
-        <span class="block"
-          >I wear two hats: Software Engineering x Product Design.</span
-        >
-        <span class="block"
-          >I design clean, thoughtful user experiences - then roll up my sleeves
-          and build them.</span
-        >
-        <span class="block"
-          >By day i’m engineering software @ <a
-            target="_blank"
-            href="https://utopiatech.africa/"
-            class="underline text-primary hover:text-secondary">Utopia Tech</a
-          >
-        </span>
-        <span class="block"
-          >By night i’m buried in side projects, client work & entrepreneurial experiments. </span
-        >
-        <span class="block"
-          >This is my humble corner of the web.</span
-        >
-		<span class="block"
-          >You’ll find my design hat over at <a
-            target="_blank"
-            href="https://design.richmnn.com/"
-            class="underline text-primary hover:text-secondary">design.richmnn.com.</a
-          >
-		  </span
-        >
-		<span class="block"
-          >And my engineering hat over at <a
-            target=""
-            href=""
-            class="underline text-primary hover:text-secondary">dev.richmnn.com.</a
-          >
-		  </span
-        >
-      </p>
+  <!-- Hero section -->
+  <section
+    class="w-full h-[100vh] flex flex-col items-center pt-[220px] md:pt-[200px] lg:pt-[160px] relative"
+  >
+    <!-- Navigation -->
+    <div class="absolute top-0 left-0 w-full z-50 block lg:hidden">
+      <MobileNav />
     </div>
-  </div>
+
+    <div class="w-fit flex flex-col gap-[32px] items-center">
+      <!-- Header Intro Text -->
+      <div class="w-[342px] md:w-fit flex flex-col gap-[4px] text-center">
+        <h1 class="text-primary">The Internet Corner of Richmann Addai</h1>
+        <h2 class="text-secondary">
+          Design Engineer ( Product Design x Web Development )
+        </h2>
+      </div>
+      <!-- Animated Images -->
+      <div class="w-fit ">
+        <HeroAnimation />
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="flex flex-col md:flex-row mt-[160px] lg:mt-[200px]">
+    <!-- Outer wrapper: 1st & 2nd columns -->
+    <div class="flex w-full md:w-1/2 border-[0.5px] border-bdprimary">
+      <!-- First Column (Navigation, Links, Music & Status) -->
+      <div class="w-1/3 h-[99.5vh] hidden lg:flex flex-col">
+        <!-- Top half: Personal info + navigation links -->
+        <div class="w-full h-1/2">
+          <DesktopNav />
+        </div>
+        <!-- Bottom half: Music Player + Status -->
+        <div
+          class="w-full h-1/2 p-[32px] flex flex-col justify-between border-[0.5px] border-bdprimary"
+        >
+          <!-- MUSIC PLAYER -->
+          <div class="w-full">
+            <MusicPlayer1 />
+          </div>
+
+          <!-- AVAILABILITY / STATUS -->
+          <div class="w-full flex flex-col gap-[4px]">
+            <h2 class="text-primary">Availability</h2>
+            <p class="text-secondary">Last updated 01-08-2025</p>
+            <div class="flex items-center gap-[4px]">
+              <div
+                class="status-dot size-[10px] bg-[#008000] rounded-full flex items-center justify-center"
+              >
+                <div class="inner-dot size-[4px] bg-[#28FF28] rounded-full">
+                </div>
+              </div>
+              <p class="text-secondary">Looking for my next role</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second Column (Main Intro Text) -->
+      <div
+        class="w-full lg:w-2/3 h-fit md:h-[99.5vh] p-[32px] border-[0.5px] border-bdprimary border-r-transparent"
+      >
+        <!-- Personal Intro praragraph -->
+        <p class="w-full text-primary">
+          Hi, I’m Richmann. <br /> I’m a designer who codes, or a Developer who designs,
+          if you must. What you’d call a design engineer. <br />
+          <br /> I design and build digital products that feel simple, useful, and
+          intentional. My work lives at the intersection of design and code, usually
+          on the frontend from well designed interfaces to production-ready code.
+          <br />
+          <br /> You’ll find my work split into three parts. Choose the one that
+          fits what you’re looking for.
+        </p>
+      </div>
+    </div>
+
+    <!-- Third column (list of links) -->
+    <div
+      class="w-full md:w-1/2 flex flex-col border-t-[0.5px] border-t-bdprimary pb-[120px] md:pb-0"
+    >
+      <!-- Design portfolio -->
+      <a
+        href="https://design.richmnn.com/"
+        target="_blank"
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Product Design</p>
+        <p>design.richmnn.com</p>
+      </a>
+      <!-- Dev portfolio -->
+      <a
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Software Development</p>
+        <p>Coming Soon</p>
+      </a>
+      <!-- Freelance portfolio -->
+      <a
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Freelance Studio</p>
+        <p>Coming Soon</p>
+      </a>
+      <!-- Mail -->
+      <a
+        href="mailto:richmanaddai@gmail.com"
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Mail</p>
+        <p>richmanaddai@gmail.com</p>
+      </a>
+      <!-- LinkedIn -->
+      <a
+        href="https://linkedin.com/in/richmnn"
+        target="_blank"
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>LinkedIn</p>
+        <p>linkedin.com/in/richmnn</p>
+      </a>
+      <!-- GitHub -->
+      <a
+        href="https://github.com/Bigrichh"
+        target="_blank"
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Github</p>
+        <p>github.com/Bigrichh</p>
+      </a>
+      <!-- Instagram -->
+      <a
+        href="https://instagram.com/big.richhhh"
+        target="_blank"
+        class="w-full p-[32px] flex items-center justify-between border-[0.5px] border-bdprimary text-primary hover:border-primary"
+      >
+        <p>Instagram</p>
+        <p>instagram.com/big.richhhh</p>
+      </a>
+    </div>
+  </section>
 </BaseLayout>
+
+
+<style is:global>
+
+
+  /* -------------------------------
+     STATUS DOT (ONLINE INDICATOR)
+  ---------------------------------*/
+  /* Outer ring with glowing effect */
+  .status-dot {
+    animation: outerGlow 1.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  /* Inner dot with pulsing effect */
+  .inner-dot {
+    animation: pulse 1.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  /* Keyframe for pulsing inner dot */
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.4;
+    }
+  }
+
+  /* Keyframe for glowing outer ring */
+  @keyframes outerGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 4px 2px rgba(0, 255, 0, 0.4);
+    }
+  }
+</style>
