@@ -108,7 +108,8 @@ import MusicPlayer2 from "./MusicPlayer2.astro";
   hamburger.addEventListener("click", () => {
     mobileNav.classList.remove("hidden");
     mobileNav.classList.add("flex");
-    document.body.classList.add("no-scroll"); // 👈 disable scroll
+    document.documentElement.classList.add("no-scroll"); // <html>
+    document.body.classList.add("no-scroll"); // <body>
 
     // Trigger reflow to allow transition to kick in
     void mobileNav.offsetWidth;
@@ -131,7 +132,7 @@ import MusicPlayer2 from "./MusicPlayer2.astro";
       },
       { once: true }
     );
-
+    document.documentElement.classList.remove("no-scroll");
     document.body.classList.remove("no-scroll");
   });
 

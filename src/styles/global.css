@@ -52,6 +52,8 @@ a {
 }
 
 .no-scroll {
-  overflow: hidden;
-  height: 100vh;
+  overflow: hidden !important;
+  height: 100vh;              /* <- Prevents scroll by locking the height */
+  position: fixed;            /* <- Optional, but adds extra lock-down */
+  width: 100%;
 }
